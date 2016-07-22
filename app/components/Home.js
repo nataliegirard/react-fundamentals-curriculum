@@ -1,4 +1,5 @@
 var React = require('react');
+var GetCityContainer = require('../containers/GetCityContainer');
 
 var styles = {
   container: {
@@ -15,17 +16,6 @@ var styles = {
     fontSize: 45,
     color: '#fff',
     fontWeight: 100
-  },
-  formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    maxWidth: 300,
-    alignSelf: 'right'
-  },
-  button: {
-    margin: 10
   }
 }
 
@@ -33,10 +23,7 @@ function Home (props) {
   return (
     <div style={styles.container}>
       <h1 style={styles.header}>Enter a City and State</h1>
-      <div style={styles.formContainer}>
-        <input className="form-control" type="text" placeholder="St. George, Utah" />
-        <button type="button" className="btn btn-success" style={styles.button}>Get Weather</button>
-      </div>
+      <GetCityContainer />
     </div>
   )
 
