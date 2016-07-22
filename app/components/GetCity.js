@@ -11,11 +11,37 @@ function getStyles (props) {
   }
 }
 
+function InputField (props) {
+  return (
+    <input className="form-control"
+      type="text"
+      placeholder="St. George, Utah"
+      value={props.city}
+      onChange={props.onUpdateCity} />
+  )
+}
+
+function Button (props) {
+  return (
+    <button type="button"
+      className="btn btn-success"
+      style={{margin: 10}}
+      onClick={props.onSubmitCity}>
+        {props.children}
+    </button>
+  )
+}
+
 function GetCity (props) {
   return (
     <div style={getStyles(props)}>
-      <input className="form-control" type="text" placeholder="St. George, Utah" />
-      <button type="button" className="btn btn-success" style={{margin: 10}}>Get Weather</button>
+      <InputField
+        onUpdateCity={props.onUpdateCity}
+        city={props.city} />
+      <Button
+        onSubmitCity={props.onSubmitCity}>
+          Get Weather
+      </Button>
     </div>
   )
 }
