@@ -19,7 +19,8 @@ var styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    margin: 35
+    margin: 35,
+    cursor: 'pointer'
   },
   header: {
     fontSize: 65,
@@ -41,7 +42,7 @@ function DayItem (props) {
   var date = getDate(props.day.dt);
   var icon = props.day.weather[0].icon;
   return (
-    <div style={styles.dayContainer}>
+    <div style={styles.dayContainer} onClick={props.handleClick}>
       <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} alt="Weather" />
       <h2 style={styles.subheader}>{date}</h2>
     </div>
@@ -54,7 +55,7 @@ function ForecastUI (props) {
       <h1 style={styles.header}>{props.city}</h1>
       <div style={styles.container}>
         {props.forecast.list.map(function (listItem) {
-          return <DayItem key={listItem.dt} day={listItem} />
+          return <DayItem key={listItem.dt} day={listItem} handleClick={props.handleClick.bind(null, listItem)} />
         })}
       </div>
     </div>
@@ -67,7 +68,10 @@ function Forecast (props) {
       {
         props.isLoading === true
           ? <h1 style={styles.header}>Loading</h1>
-          : <ForecastUI city={props.city} forecast={props.forecastData} />
+          : <ForecastUI
+            city={props.city}
+            forecast={props.forecastData}
+            handleClick={props.handleClick} />
       }
     </div>
   )
