@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 
 function getStyles (props) {
   return {
@@ -44,6 +45,13 @@ function GetCity (props) {
       </Button>
     </div>
   )
+}
+
+GetCity.propTypes = {
+  direction: PropTypes.string,
+  onSubmitCity: PropTypes.func.isRequired,
+  onUpdateCity: PropTypes.func.isRequired,
+  city: PropTypes.string.isRequired
 }
 
 module.exports = GetCity;
